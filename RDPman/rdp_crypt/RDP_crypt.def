@@ -1,0 +1,5 @@
+LIBRARY	"rdp_crypt"
+EXPORTS
+	encryptPassword
+	decryptPassword
+	

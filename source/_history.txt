@@ -1,0 +1,80 @@
+WinRdesktop
+
+MANY THANKS to Adam B., Trent M. and Brad H. for getting SSL and TLS 1.0 working
+
+A free rdp client for Windows Mobile
+
+Usage:
+  WinRDesktop - an RDP client based on rdesktop
+  You can't run this application without correct parameters
+  
+  command line options
+  
+  WinRDesktop [-g widthxheight] [-t port] [-a bpp]
+      [-u username] [-p password] [-d domain]
+      [-s shell] [-n host name]
+      server-name-or-ip
+  
+  not supported: [-c working directory], [-f] , clipboard
+  
+  You can use a config file in the current or root directory
+  called WinRDesktop.ini
+  The file should look like this:
+  
+  [main]
+  server=192.168.1.1
+  port=3389
+  username=user1
+  password=password1
+  bpp=8/15/16
+  geometry=800x600
+
+===============================================================
+2009
+	dec
+		01
+			fullscreen (-f) currently not supported, does not make sense
+			
+			VK_CAPITAL only applied to letters not to numbers
+			Only letters (A-z) and digits (0-9) work on default SIP
+			Shifted standard SIP is also OK
+			in Number SIP chars are mixed up
+			
+			WM_CHAR not supported, need KEY_UP/KEY_DOWN
+			
+			added code to allow only one instance!
+	dec
+		15
+			added barcode reader code
+			added getTime function
+2010
+	nov
+		23
+			fullscreen implemented this way:
+			use geometry=240x320 and fullscreen on a QVGA device and you will get a fullscreen 
+			window without scrollbars
+			if geometry is larger than device screen, you will get scrollbars but there is no
+			window caption and no menubar (what I call fullscreen).
+			
+			To exit rdesktop in full screen mode double click in the middle of the top (imaginary)
+			caption and you will be asked for exit.
+			
+2010
+	nov
+		24
+			Added CEUX HI_RES_AWARE resource for non-QVGA
+
+2010
+	dec
+		16
+			changed SendKeys(":ART\r");  inside WndProc (win32.c) for WM_HAVE_SCAN to SendKeys("\r");
+			This code line sends a return code after sending barcode received data and is known as Postamble
+			
+r59			version before TLS SSL patch
+
+r60
+			added SSL(TLS1.0) support analog to rdesktop 1.7.1
+r78
+			fixed some USE_SCANNER compilation issues, new binaries
+			rdesktopce_bscan.exe	03.12.2013 08:17:50
+			rdesktopce_nobscan.exe	03.12.2013 08:08:27

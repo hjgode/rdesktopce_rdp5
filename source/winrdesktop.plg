@@ -1,0 +1,80 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: winrdesktop - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\j\LOCALS~1\Temp\RSP2B.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/winrdesktop.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"J:\TEMP\rdesktop\bitmap.c"
+"J:\TEMP\rdesktop\bsops.c"
+"J:\TEMP\rdesktop\cache.c"
+"J:\TEMP\rdesktop\channels.c"
+"J:\TEMP\rdesktop\iso.c"
+"J:\TEMP\rdesktop\licence.c"
+"J:\TEMP\rdesktop\mcs.c"
+"J:\TEMP\rdesktop\mppc.c"
+"J:\TEMP\rdesktop\orders.c"
+"J:\TEMP\rdesktop\pstcache.c"
+"J:\TEMP\rdesktop\rdp.c"
+"J:\TEMP\rdesktop\rdp5.c"
+"J:\TEMP\rdesktop\secure.c"
+"J:\TEMP\rdesktop\ssl_calls.c"
+"J:\TEMP\rdesktop\tcp.c"
+"J:\TEMP\rdesktop\uimain.c"
+"J:\TEMP\rdesktop\win32.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\j\LOCALS~1\Temp\RSP2B.tmp" 
+Creating temporary file "C:\DOCUME~1\j\LOCALS~1\Temp\RSP2C.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ws2_32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/winrdesktop.pdb" /machine:I386 /out:"Release/winrdesktop.exe" 
+.\Release\bitmap.obj
+.\Release\bsops.obj
+.\Release\cache.obj
+.\Release\channels.obj
+.\Release\iso.obj
+.\Release\licence.obj
+.\Release\mcs.obj
+.\Release\mppc.obj
+.\Release\orders.obj
+.\Release\pstcache.obj
+.\Release\rdp.obj
+.\Release\rdp5.obj
+.\Release\secure.obj
+.\Release\ssl_calls.obj
+.\Release\tcp.obj
+.\Release\uimain.obj
+.\Release\win32.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\j\LOCALS~1\Temp\RSP2C.tmp"
+<h3>Output Window</h3>
+Compiling...
+bitmap.c
+bsops.c
+cache.c
+channels.c
+iso.c
+licence.c
+mcs.c
+mppc.c
+orders.c
+pstcache.c
+rdp.c
+rdp5.c
+secure.c
+ssl_calls.c
+tcp.c
+uimain.c
+win32.c
+Linking...
+
+
+
+<h3>Results</h3>
+winrdesktop.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

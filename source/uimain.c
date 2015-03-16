@@ -24,6 +24,7 @@
 #include "bsops.h"
 
 BOOL g_busescanner=FALSE;	//enable or disable scanner global default, see 'barcodescanner' in ini file or use '-b' in argument
+BOOL g_bnosip=FALSE;	    //enable or disable showing the sip button
 char *g_username;
 char g_hostname[256] = "";
 char g_servername[256] = "";

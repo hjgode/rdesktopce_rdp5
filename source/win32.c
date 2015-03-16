@@ -74,6 +74,7 @@ BOOL g_rdpclip = FALSE;
 //wait cursor on startup
 HCURSOR hCurs1;
 
+extern BOOL g_bnosip;
 extern BOOL g_busescanner;
 extern char *g_username;
 extern char g_hostname[16];
@@ -220,14 +221,17 @@ int ExistFile(TCHAR* filename)
 // simple code to show/hide the SIP button
 void SipButtonShow( BOOL bShow )
 {
-HWND hWnd = FindWindow( _T( "MS_SIPBUTTON" ), NULL );
-if (hWnd == NULL)
-	return;
+	HWND hWnd = NULL;
+	if(g_bnosip)
+		bShow=FALSE;
+	hWnd = FindWindow( _T( "MS_SIPBUTTON" ), NULL );
+	if (hWnd == NULL)
+		return;
 
-if (bShow)
-	ShowWindow( hWnd, SW_SHOW );
-else
-	ShowWindow( hWnd, SW_HIDE );
+	if (bShow)
+		ShowWindow( hWnd, SW_SHOW );
+	else
+		ShowWindow( hWnd, SW_HIDE );
 
 } // PFCSipButtonShow
 
@@ -1376,7 +1380,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
       break;
 //#endif
     case WM_PAINT:
-		SipButtonShow(TRUE);
+	  SipButtonShow(TRUE);
       return handle_WM_PAINT(hWnd, message, wParam, lParam);
     case WM_DESTROY:
 		do_hide_taskbar(FALSE);
@@ -1729,6 +1733,10 @@ mi_process_a_param(char * param1, int state)
     {
       state = 12;
     }
+    if (strcmp(param1, "-sip") == 0 || strcmp(param1, "nosip") == 0)
+    {
+      state = 13;
+    }
   }
   else
   {
@@ -1811,6 +1819,11 @@ mi_process_a_param(char * param1, int state)
     if (state == 12) /* -b enable scanner */
     {
 		g_busescanner=TRUE;
+      state = 0;
+	}
+    if (state == 13) /* -sip / nosip */
+    {
+		g_bnosip=TRUE;
       state = 0;
 	}
   }
@@ -2068,6 +2081,7 @@ mi_show_params(void)
   strcat(text1, "WinRDesktop [-g widthxheight] [-t port] [-a bpp]\r\n");
   strcat(text1, "    [-f] [-u username] [-p password] [-d domain]\r\n");
   strcat(text1, "    [-s shell] [-c working directory] [-n host name]\r\n");
+  strcat(text1, "    [-sip]\r\n");
   strcat(text1, "    server-name-or-ip\r\n");
   strcat(text1, "\r\n");
   strcat(text1, "You can use a config file in the current directory\r\n");
@@ -2080,6 +2094,10 @@ mi_show_params(void)
   strcat(text1, "password=password1\r\n");
   strcat(text1, "bpp=16\r\n");
   strcat(text1, "geometry=800x600\r\n");
+  strcat(text1, "fullscreen\r\n");
+  strcat(text1, "clipboard\r\n");
+  strcat(text1, "barcodescanner\r\n");
+  strcat(text1, "nosip\r\n");
 #ifdef WITH_DEBUG
   printf(text1);
 #else /* WITH_DEBUG */

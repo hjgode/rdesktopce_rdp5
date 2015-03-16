@@ -78,3 +78,8 @@ r78
 			fixed some USE_SCANNER compilation issues, new binaries
 			rdesktopce_bscan.exe	03.12.2013 08:17:50
 			rdesktopce_nobscan.exe	03.12.2013 08:08:27
+2015
+	mar
+		16
+			added switch (-sip, nosip) to disable show sip
+			

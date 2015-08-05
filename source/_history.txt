@@ -83,3 +83,13 @@ r78
 		16
 			added switch (-sip, nosip) to disable show sip
 			
+2015
+	aug
+		05
+			CEUX HI_RES_AWARE has been removed, lores build controlled via linker option
+			removed conditional #define USE_SCANNER
+			change barcodereader.h to use itcscan.dll dynamically
+			removed obsolete buil configs
+			added debug_lores build with linker:advanced= /subsystem:windowsce,4.20 instead of  /subsystem:windowsce,5.01
+			
+			

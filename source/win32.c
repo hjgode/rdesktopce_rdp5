@@ -22,8 +22,8 @@
 #define MYWINCE
 #endif
 
-//use barcode scanner code?
-#define USE_SCANNER
+//use barcode scanner code? NOW handled via g_busescanner!
+///#define USE_SCANNER
 //#undef USE_SCANNER
 
 int MENU_HEIGHT=26; //was a #define
@@ -54,9 +54,7 @@ extern int WSAAsyncSelect(
 
 #include "winscancodes.h"
 
-#ifdef USE_SCANNER
 	#include "barcodereader.h"
-#endif
 
 #include "keymap.h"
 
@@ -1276,7 +1274,6 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	TCHAR* wStr;
   switch (message)
   {
-#ifdef USE_SCANNER
 	case WM_CREATE:
 		if(!g_fullscreen)
 			doCreateMenu(hWnd, g_Instance); //HGO
@@ -1315,12 +1312,6 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		// Let scanning thread know we have consumed data.
 		SetEvent( ghScannRead);
 		break;
-#else	//ifdef USE_SCANNER
-	case WM_CREATE:
-		if(!g_fullscreen)
-			doCreateMenu(hWnd, g_Instance); //HGO
-		break;
-#endif	//USE_SCANNER
     case WM_SETCURSOR:
       return handle_WM_SETCURSOR(hWnd, message, wParam, lParam);
     case 0x0084: /* WinCE don't have this WM_NCHITTEST: */
@@ -1369,7 +1360,6 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		//	return DefWindowProc(hWnd, message, wParam, lParam); //let windows translate this to WM_CHAR
 		//else
 		return handle_WM_KEYUP(hWnd, message, wParam, lParam);
-//#ifndef USE_SCANNER
     case WM_CHAR: //########### HGO ##############
     case WM_DEADCHAR:
     case WM_SYSCHAR:
@@ -1378,7 +1368,6 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return handle_WM_CHAR(hWnd, message, wParam, lParam);
 		//return DefWindowProc(hWnd, message, wParam, lParam);
       break;
-//#endif
     case WM_PAINT:
 	  SipButtonShow(TRUE);
       return handle_WM_PAINT(hWnd, message, wParam, lParam);

@@ -2147,10 +2147,6 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
   hCurs1 = LoadCursor(NULL, IDC_WAIT);
   if(hCurs1!=INVALID_HANDLE_VALUE)
 	SetCursor(hCurs1);
-
-  ImmDisableIME(0);
-       
-
   return ui_main();
 }
 #endif /* WITH_DEBUG */

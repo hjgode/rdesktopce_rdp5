@@ -279,6 +279,7 @@ tcp_tls_connect(void)
 	if (g_ssl_ctx == NULL)
 	{
 		error("tcp_tls_connect: SSL_CTX_new() failed to create TLS v1.0 context\n");
+		DEBUGMSG(1, (L"tcp_tls_connect: SSL_CTX_new() failed to create TLS v1.0 context\n"));
 		goto fail;
 	}
 
@@ -288,27 +289,32 @@ tcp_tls_connect(void)
 	if (g_ssl == NULL)
 	{
 		error("tcp_tls_connect: SSL_new() failed\n");
+		DEBUGMSG(1, (L"tcp_tls_connect: SSL_new() failed\n"));
 		goto fail;
 	}
 
 	if (SSL_set_fd(g_ssl, g_sock) < 1)
 	{
 		error("tcp_tls_connect: SSL_set_fd() failed\n");
+		DEBUGMSG(1, (L"tcp_tls_connect: SSL_set_fd() failed\n"));
 		goto fail;
 	}
 
 	do
 	{
 		err = SSL_connect(g_ssl);
+		DEBUGMSG(1, (L"SSL_connect: %i\n", err));
 	}
 	while (SSL_get_error(g_ssl, err) == SSL_ERROR_WANT_READ);
 
 	if (err < 0)
 	{
 		ERR_print_errors_fp(stdout);
+		DEBUGMSG(1, (L"SSL_connect() failed\n"));
 		goto fail;
 	}
 
+	DEBUGMSG(1, (L"SSL_connect() OK\n"));
 	return True;
 
       fail:

@@ -2127,9 +2127,10 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     WSACleanup();
     return 0;
   }
-  DEBUGMSG(1, (L"global vars:\r\nbpp=%i, usescanner=%i, workdir='%S', domain='%S', fullscreen=%i\
+  DEBUGMSG(1, (L"global vars:\r\nserver=%S, bpp=%i, usescanner=%i, workdir='%S', domain='%S', fullscreen=%i\
 				\r\nheight=%i, width=%i, screenH=%i, screenW=%i, \
 				\r\nhostname='%S', user='%S', pass='%S', shell='%S', port=%i\r\n",
+				g_servername,
 	  g_server_depth,
 	  g_busescanner,
 	  g_directory,

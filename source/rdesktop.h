@@ -20,6 +20,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+//#include <strsafe.h>
 #include <string.h>
 #ifdef _WIN32
 	#include <winsock2.h> /* winsock2.h first */

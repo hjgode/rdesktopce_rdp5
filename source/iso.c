@@ -198,7 +198,7 @@ iso_connect(char *server, char *username, RD_BOOL reconnect, uint32 * selected_p
 
 	g_negotiate_rdp_protocol = True;
 
-      retry:
+retry:
 	*selected_protocol = PROTOCOL_RDP;
 	code = 0;
 
@@ -292,7 +292,9 @@ iso_connect(char *server, char *username, RD_BOOL reconnect, uint32 * selected_p
 			{
 				tcp_disconnect();
 				DEBUGMSG(1,(L"iso_connect: negotiation: PROTOCOL_SSL FAILED\n"));
-				return False;
+				g_negotiate_rdp_protocol = False;
+				goto retry;
+				//return False;
 			}
 
 			/* do not use encryption when using TLS */

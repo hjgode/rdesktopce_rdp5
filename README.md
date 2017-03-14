@@ -1,0 +1,18 @@
+# rdesktopce_rdp5
+
+Ini settings:
+
+    [main]
+    server=199.64.70.66
+    port=3389
+    username=rdesktop
+    password=rdesktop
+    bpp=16
+    geometry=1024x768
+    #geometry=480x640
+    #geometry=240x320
+    fullscreen
+    clipboard
+    #barcodescanner
+    nosip
+
